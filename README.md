@@ -14,3 +14,14 @@
   - Name of the selected city
   - Minimum temperature (Celsius)
   - Maximum temperature (Celsius)
+
+
+## Technologies
+
+- React ( framewrok js UI )
+- Redux
+- Styled components
+
+### Infra
+  - Docker
+  - Docker-compose ( development )
