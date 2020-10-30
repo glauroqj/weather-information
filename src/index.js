@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 /** redux */
 import { Provider } from 'react-redux'
-import { store } from './store/index'
+import { store } from './store'
 
 /** routes */
 import Routes from './routes/Routes'
