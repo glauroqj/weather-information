@@ -23,13 +23,15 @@ const Map = ({ history }) => {
   const loadedMap = () => {
     /** load map and set in store */
     if (window.google) {
-      loadingMapDone(
-        new window.google.maps.Map(
-          document.getElementById('map'),
-          {
-            center: { lat: -15.749997, lng: -47.9499962 },
-            zoom: 8,
-        })
+      dispatch(
+        loadingMapDone(
+          new window.google.maps.Map(
+            document.getElementById('map'),
+            {
+              center: { lat: -15.749997, lng: -47.9499962 },
+              zoom: 8,
+          })
+        )
       )
     }
   }
@@ -50,12 +52,16 @@ const Map = ({ history }) => {
     }
   }
 
-  if (mapLoading) return (
-    <El.MapContainerLoading>
-      <Loading text='Loading map...' />
-    </El.MapContainerLoading>
+  return (
+    <>
+      <El.MapContainer id='map' />
+      {mapLoading && (
+        <El.MapContainerLoading>
+          <Loading text='Loading map...' />
+        </El.MapContainerLoading>
+      )}
+    </>
   )
-  return <El.MapContainer id='map' />
 }
 
 export default Map

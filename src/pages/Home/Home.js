@@ -8,7 +8,7 @@ const Map = lazy(() => import('../../components/Map/Map'))
 
 const Home = ({ history }) => {
   // const dispatch = useDispatch()
-  const { loading } = useSelector(state => state.weather)
+  // const { loading } = useSelector(state => state.weather)
 
 
   // const callLoginService = async () => {
@@ -29,7 +29,7 @@ const Home = ({ history }) => {
 
   // }
 
-  if (loading) return <Loading text='Loading home...' />
+  // if (loading) return <Loading text='Loading home...' />
 
   return (
     <El.HomeContainer className='animated fadeIn'>

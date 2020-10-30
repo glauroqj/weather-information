@@ -8,6 +8,7 @@ const initialState = {
 }
 
 const weather = (state = initialState, action) => {
+  console.log('< MAP REDUCER > ', action)
   switch (action.type) {
     case MAP.LOAD_MAP_DONE:
       return {
