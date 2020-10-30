@@ -11,7 +11,8 @@ const loadingMapStart = () => ({
 
 const loadingMapDone = payload => ({
   type: MAP.LOAD_MAP_DONE,
-  mapInstance: payload,
+  mapInstance: payload.mapInstance,
+  mapMarker: payload.mapMarker,
   mapLoading: false
 })
 

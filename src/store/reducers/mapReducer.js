@@ -1,10 +1,11 @@
 /* actions */
-import { MAP } from '../actions/mapActions'
+import { MAP } from 'store/actions/mapActions'
 
 /** initial state */
 const initialState = {
   mapLoading: true,
-  map: null
+  mapInstance: null,
+  mapMarker: null
 }
 
 const weather = (state = initialState, action) => {
@@ -13,7 +14,7 @@ const weather = (state = initialState, action) => {
     case MAP.LOAD_MAP_DONE:
       return {
         ...state,
-        mapInstance: action.map,
+        mapInstance: action.mapInstance,
         mapLoading: action.loading
       }
     default:

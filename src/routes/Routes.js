@@ -6,9 +6,9 @@ import {
   Redirect
 } from 'react-router-dom'
 /** components */
-import Loading from '../components/Loading/Loading'
+import Loading from 'components/Loading/Loading'
 /** pages */
-const Home = lazy(() => import('../pages/Home/Home'))
+const Home = lazy(() => import('pages/Home/Home'))
 
 const Routes = () => {
 

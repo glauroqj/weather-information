@@ -21,17 +21,25 @@ const Map = ({ history }) => {
   }, [mapLoading])
 
   const loadedMap = () => {
+    const position = { lat: -15.749997, lng: -47.9499962 }
     /** load map and set in store */
     if (window.google) {
+      const startMap = new window.google.maps.Map(document.getElementById('map'), {
+        center: position,
+        zoom: 8,
+      })
+
+      const marker = new window.google.maps.Marker({
+        position: position,
+        map: startMap,
+        draggable: true
+      })
+
       dispatch(
-        loadingMapDone(
-          new window.google.maps.Map(
-            document.getElementById('map'),
-            {
-              center: { lat: -15.749997, lng: -47.9499962 },
-              zoom: 8,
-          })
-        )
+        loadingMapDone({
+          mapInstance: startMap,
+          mapMarker: marker
+        })
       )
     }
   }

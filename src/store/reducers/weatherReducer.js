@@ -1,5 +1,5 @@
 /* actions */
-import { WEATHER } from '../actions/weatherActions'
+import { WEATHER } from 'store/actions/weatherActions'
 
 /** initial state */
 const initialState = {
