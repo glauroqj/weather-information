@@ -13,7 +13,7 @@ const weather = (state = initialState, action) => {
     case MAP.LOAD_MAP_DONE:
       return {
         ...state,
-        map: action.map,
+        mapInstance: action.map,
         mapLoading: action.loading
       }
     default:
