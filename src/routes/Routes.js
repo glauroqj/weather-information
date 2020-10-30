@@ -1,17 +1,22 @@
 import React, { Suspense, lazy } from 'react'
-
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  Redirect
+} from 'react-router-dom'
+/** components */
+import Loading from '../components/Loading/Loading'
 /** pages */
 const Home = lazy(() => import('../pages/Home/Home'))
-/** components */
-const Loading = lazy(() => import('../components/Loading'))
 
 const Routes = () => {
 
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   return (    
     <BrowserRouter>
-        <ServiceWorker />
+        {/* <ServiceWorker /> */}
         
         <Suspense fallback={ <Loading text='Carregando...' color='secondary' /> }>
           <Switch>

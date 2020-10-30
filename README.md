@@ -19,8 +19,8 @@
 ## Technologies
 
 - React ( framewrok js UI )
-- Redux
-- Styled components
+- Redux ( state management )
+- Styled components ( css in js )
 
 ### Infra
   - Docker

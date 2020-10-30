@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
-// import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, lazy } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 /** components */
-import Loading from '../components/Loading'
+const Loading = lazy(() => import('../../components/Loading/Loading'))
 
 
 const Home = ({ history }) => {
   // const dispatch = useDispatch()
-  // const { account, loading } = useSelector(state => state.user)
+  const { loading } = useSelector(state => state.weather)
 
 
   // const callLoginService = async () => {
@@ -27,6 +27,7 @@ const Home = ({ history }) => {
 
   // }
 
+  if (loading) return <Loading text='Loading home...' />
 
   return (
     <div>
