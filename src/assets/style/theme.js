@@ -6,12 +6,10 @@ const Breakpoints = {
 }
 
 const Colors = {
-  c_main: '#e66760',
-  c_main_dark: '#A64A46',
-  c_secondary: '#8c88cd',
-  c_secondary_dark: '#5F5D8C',
-  c_third: '#DEA862',
-  c_third_dark: '#C49556',
+  c_main: '#3498db',
+  c_main_dark: '#2980b9',
+  c_secondary: '#34495e',
+  c_secondary_dark: '#2c3e50',
 }
 
 const Spaces = {

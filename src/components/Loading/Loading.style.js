@@ -29,10 +29,10 @@ export const LoadingRing = styled.div`
     width: inherit;
     height: inherit;
     margin: 8px;
-    border: 8px solid #323232;
+    border: 8px solid ${props => props.theme.color.c_main};
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #323232 transparent transparent transparent;
+    border-color: ${props => props.theme.color.c_main} transparent transparent transparent;
   }
 
   div:nth-child(1) {

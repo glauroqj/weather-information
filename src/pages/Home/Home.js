@@ -32,7 +32,7 @@ const Home = ({ history }) => {
   if (loading) return <Loading text='Loading home...' />
 
   return (
-    <El.HomeContainer>
+    <El.HomeContainer className='animated fadeIn'>
       <Map />
     </El.HomeContainer>
   )
