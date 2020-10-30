@@ -11,8 +11,8 @@ const loadingMapStart = () => ({
 
 const loadingMapDone = payload => ({
   type: MAP.LOAD_MAP_DONE,
-  map: payload,
-  loading: false
+  mapInstance: payload,
+  mapLoading: false
 })
 
 const loadingMapError = () => ({
