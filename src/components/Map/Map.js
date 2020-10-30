@@ -2,13 +2,15 @@ import React, { useEffect, lazy } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 /** style */
 import * as El from './Map.style'
+/** actions */
+import { loadingMapStart } from 'store/actions/mapActions'
 /** components */
-const Loading = lazy(() => import('../../components/Loading/Loading'))
+const Loading = lazy(() => import('components/Loading/Loading'))
 
 const apiKey = process.env.REACT_APP_API_KEY_G
 
 const Map = ({ history }) => {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const { mapLoading, map } = useSelector(state => state.map)
 
 
@@ -31,6 +33,9 @@ const Map = ({ history }) => {
   const renderMap = callback => {
     /** check if sdk is already loaded */
     if ( !document.getElementById('googleMaps') ) {
+
+      dispatch( loadingMapStart() )
+
       let tag = document.createElement('script')
       tag.async = true
       tag.defer = true

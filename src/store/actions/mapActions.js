@@ -24,5 +24,6 @@ const loadingMapError = () => ({
 export {
   MAP,
   loadingMapStart,
+  loadingMapDone,
   loadingMapError
 }
