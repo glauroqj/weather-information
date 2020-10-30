@@ -11,7 +11,7 @@ const apiKey = process?.env?.REACT_APP_API_KEY_G
 
 const Map = ({ history }) => {
   const dispatch = useDispatch()
-  const { mapLoading, map } = useSelector(state => state.map)
+  const { mapLoading, mapInstance } = useSelector(state => state.map)
 
 
   // if (loading) return <Loading text='Loading Map...' />
