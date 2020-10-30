@@ -33,7 +33,6 @@ const Home = ({ history }) => {
 
   return (
     <El.HomeContainer>
-      HOME
       <Map />
     </El.HomeContainer>
   )
