@@ -8,10 +8,12 @@ const WEATHER = {
 const fetchStarting = () => ({
   type: WEATHER.GET_WEATHER_STARTING
 })
+
 const fetchDone = payload => ({
   type: WEATHER.GET_WEATHER_DONE,
   loading: false
 })
+
 const fetchError = () => ({
   type: WEATHER.GET_WEATHER_ERROR,
   loading: false

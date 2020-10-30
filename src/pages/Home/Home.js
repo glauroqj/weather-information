@@ -1,8 +1,10 @@
 import React, { useEffect, lazy } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+/** style */
+import * as El from './Home.style'
 /** components */
 const Loading = lazy(() => import('../../components/Loading/Loading'))
-
+const Map = lazy(() => import('../../components/Map/Map'))
 
 const Home = ({ history }) => {
   // const dispatch = useDispatch()
@@ -30,9 +32,10 @@ const Home = ({ history }) => {
   if (loading) return <Loading text='Loading home...' />
 
   return (
-    <div>
+    <El.HomeContainer>
       HOME
-    </div>
+      <Map />
+    </El.HomeContainer>
   )
 }
 

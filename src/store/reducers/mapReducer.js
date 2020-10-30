@@ -1,19 +1,18 @@
 /* actions */
-import { WEATHER } from '../actions/weatherActions'
+import { MAP } from '../actions/mapActions'
 
 /** initial state */
 const initialState = {
-  loading: false,
-  error: false,
   mapLoading: true,
   map: null
 }
 
 const weather = (state = initialState, action) => {
   switch (action.type) {
-    case WEATHER.GET_WEATHER_DONE:
+    case MAP.LOAD_MAP_DONE:
       return {
         ...state,
+        map: action.map,
         loading: action.loading
       }
     default:
