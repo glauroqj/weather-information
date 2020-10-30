@@ -14,7 +14,7 @@ const weather = (state = initialState, action) => {
       return {
         ...state,
         map: action.map,
-        loading: action.loading
+        mapLoading: action.loading
       }
     default:
       return state
