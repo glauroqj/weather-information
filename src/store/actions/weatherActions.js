@@ -6,14 +6,14 @@ const WEATHER = {
 
 /** fetch */
 const fetchStarting = () => ({
-  type: PRODUCT.GET_WEATHER_STARTING
+  type: WEATHER.GET_WEATHER_STARTING
 })
 const fetchDone = payload => ({
-  type: PRODUCT.GET_WEATHER_DONE,
+  type: WEATHER.GET_WEATHER_DONE,
   loading: false
 })
 const fetchError = () => ({
-  type: PRODUCT.GET_WEATHER_ERROR,
+  type: WEATHER.GET_WEATHER_ERROR,
   loading: false
 })
 
