@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+
+  weather_information:
+    container_name: weather_information
+    working_dir: /app
+    build:
+      context: ./
+      dockerfile: ./infra/dev/Dockerfile
+    volumes:
+      - ./:/app
+    env_file:
+      - ./.env.development
+    ports:
+      - "3000:3000"
