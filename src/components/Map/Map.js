@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy } from 'react'
+import React, { useState, useEffect, lazy, memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 /** style */
 import * as El from './Map.style'
@@ -9,15 +9,16 @@ import {
   mapUpdatePosition
 } from 'store/actions/mapActions'
 /** components */
-const Loading = lazy(() => import('components/Loading/Loading'))
+import Loading from 'components/Loading/Loading'
 
 const apiKey = process?.env?.REACT_APP_API_KEY_GOOGLE
 
 const Map = () => {
   const dispatch = useDispatch()
-  const { position, mapLoading } = useSelector(state => state.map)
+  const { position, mapLoading, error } = useSelector(state => state.map)
 
   useEffect(() => {
+    console.log('< render map >')
     renderMap( loadedMap )
   }, [])
 
@@ -76,6 +77,8 @@ const Map = () => {
     }
   }
 
+  if (error) return <h4>{error}</h4>
+
   return (
     <>
       <El.MapContainer id='map' />
@@ -88,4 +91,4 @@ const Map = () => {
   )
 }
 
-export default Map
+export default memo(Map)

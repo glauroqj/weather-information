@@ -18,7 +18,7 @@ const loadingMapDone = () => ({
 
 const loadingMapError = () => ({
   type: MAP.LOAD_MAP_ERROR,
-  loading: false,
+  mapLoading: false,
   error: 'Something is wrong when load google maps'
 })
 

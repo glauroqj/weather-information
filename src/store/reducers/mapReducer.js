@@ -7,11 +7,11 @@ const initialState = {
   position: {
     lat: -15.749,
     lng:-47.949
-  }
+  },
+  error: false
 }
 
 const weather = (state = initialState, action) => {
-  console.log('< MAP REDUCER > ', action)
   switch (action.type) {
     case MAP.LOAD_MAP_DONE:
       return {
@@ -22,6 +22,12 @@ const weather = (state = initialState, action) => {
       return {
         ...state,
         position: action.position
+      }
+    case MAP.LOAD_MAP_ERROR:
+      return {
+        ...state,
+        mapLoading: action.loading,
+        error: action.error
       }
     default:
       return state

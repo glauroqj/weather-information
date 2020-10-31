@@ -18,12 +18,12 @@ const Routes = () => {
     <BrowserRouter>
         {/* <ServiceWorker /> */}
         
-        <Suspense fallback={ <Loading text='Loading...' /> }>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Redirect push to="/" />
-          </Switch>
-        </Suspense>
+      <Suspense fallback={ <Loading text='Loading...' /> }>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Redirect push to="/" />
+        </Switch>
+      </Suspense>
 
     </BrowserRouter>
   )

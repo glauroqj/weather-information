@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 /**style */
 import * as El from './Button.style'
 /** components */
-const Loading = lazy(() => import('components/Loading/Loading'))
+import Loading from 'components/Loading/Loading'
 
 const Button = (
   {
