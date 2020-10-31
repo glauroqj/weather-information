@@ -7,7 +7,7 @@ import * as El from './Sidebar.style'
 /** components */
 
 const Sidebar = ({ history, list }) => {
-  console.log('< SIDEBAR > ', list)
+  console.log('< SIDEBAR > ', history, list)
   // const dispatch = useDispatch()
   // const { position, mapLoading } = useSelector(state => state.map)
   
@@ -634,4 +634,6 @@ Sidebar.propTypes = {
   list: PropTypes.array
 }
 
-export default Sidebar
+export default withRouter(
+  memo(Sidebar)
+)

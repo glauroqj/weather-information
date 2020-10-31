@@ -41,7 +41,7 @@ const Home = ({ history }) => {
         />
       )}
       <HomeButtonContainer />
-      {/* <Map /> */}
+      <Map />
 
     </El.HomeContainer>
   )
