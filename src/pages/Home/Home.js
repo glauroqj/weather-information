@@ -1,4 +1,4 @@
-import React, { useEffect, lazy } from 'react'
+import React, { useState, useEffect, lazy } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 /** style */
 import * as El from './Home.style'
@@ -9,10 +9,12 @@ const Map = lazy(() => import('components/Map/Map'))
 
 const Home = ({ history }) => {
   // const dispatch = useDispatch()
-  const { position } = useSelector(state => state.map)
+  const { position, mapLoading } = useSelector(state => state.map)
+
+  const [showButton, setShowButton] = useState(false)
 
   useEffect(() => {
-    console.log('< HOME > ', position)
+    if (!mapLoading && !showButton) setShowButton(true)
   }, [position])
   // const callLoginService = async () => {
 
@@ -36,13 +38,22 @@ const Home = ({ history }) => {
 
   return (
     <El.HomeContainer className='animated fadeIn'>
-      <Button
-        actionClick={() => {}}
-        size='sm'
-        color='primary'
-      >
-        Search
-      </Button>
+
+      {!mapLoading && (
+        <El.HomeButtonContainer 
+          className='animated fadeIn'
+          show={showButton}
+        >
+          <Button
+            actionClick={() => {}}
+            size='lg'
+            color='secondary'
+          >
+            Search
+          </Button>
+        </El.HomeButtonContainer>
+      )}
+
       <Map />
     </El.HomeContainer>
   )
