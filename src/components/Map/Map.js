@@ -8,6 +8,7 @@ import {
   loadingMapDone,
   mapUpdatePosition
 } from 'store/actions/mapActions'
+import { toogleSidebarAction } from 'store/actions/weatherActions'
 /** components */
 import Loading from 'components/Loading/Loading'
 
@@ -24,7 +25,6 @@ const Map = () => {
   const mapEvents = marker => {
     window.google.maps.event.addListener(marker, 'dragend', event => {
       const { lat, lng } = event.latLng
-      console.log('< DRAG END > ', lat().toFixed(3), lng().toFixed(3) )
 
       dispatch(
         mapUpdatePosition({
@@ -32,6 +32,10 @@ const Map = () => {
           lng: lng().toFixed(3)
         })
       )
+    })
+
+    window.google.maps.event.addListener(marker, 'dragstart', () => {
+      dispatch( toogleSidebarAction(false) )
     })
   }
 
