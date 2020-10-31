@@ -33,3 +33,7 @@ const fetchWeatherService = () => async dispatch => {
 }
 
 export { WEATHER, fetchWeatherService }
+
+/**
+  API DOCS: https://openweathermap.org/weather-data
+*/

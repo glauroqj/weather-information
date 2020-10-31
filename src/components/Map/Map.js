@@ -1,4 +1,4 @@
-import React, { useEffect, lazy } from 'react'
+import React, { useState, useEffect, lazy } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 /** style */
 import * as El from './Map.style'
@@ -7,21 +7,25 @@ import { loadingMapStart, loadingMapDone } from 'store/actions/mapActions'
 /** components */
 const Loading = lazy(() => import('components/Loading/Loading'))
 
-const apiKey = process?.env?.REACT_APP_API_KEY_G
+const apiKey = process?.env?.REACT_APP_API_KEY_GOOGLE
 
 const Map = ({ history }) => {
   const dispatch = useDispatch()
-  const { mapLoading, mapInstance } = useSelector(state => state.map)
-
-
-  // if (loading) return <Loading text='Loading Map...' />
+  const { position, mapLoading } = useSelector(state => state.map)
 
   useEffect(() => {
     renderMap( loadedMap )
-  }, [mapLoading])
+  }, [])
+
+  const mapEvents = (marker, infoWindow) => {
+    window.google.maps.event.addListener(marker, 'dragend', event => {
+      const { lat, lng } = event.latLng
+      console.log('< DRAG END > ', lat().toFixed(3), lng().toFixed(3) )
+      console.log(infoWindow)
+    })
+  }
 
   const loadedMap = () => {
-    const position = { lat: -15.749997, lng: -47.9499962 }
     /** load map and set in store */
     if (window.google) {
       const startMap = new window.google.maps.Map(document.getElementById('map'), {
@@ -32,8 +36,14 @@ const Map = ({ history }) => {
       const marker = new window.google.maps.Marker({
         position: position,
         map: startMap,
-        draggable: true
+        draggable: true,
+        title: 'Test'
       })
+
+      const infoWindow = new window.google.maps.InfoWindow({
+        content: "Drag the pin and click on button search to get informations!"
+      })
+      infoWindow.open(startMap, marker)
 
       dispatch(
         loadingMapDone({
@@ -41,6 +51,9 @@ const Map = ({ history }) => {
           mapMarker: marker
         })
       )
+
+      /** handle map events */
+      mapEvents(marker, infoWindow)
     }
   }
 
