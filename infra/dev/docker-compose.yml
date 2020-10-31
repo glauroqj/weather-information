@@ -1,6 +1,19 @@
 version: '3.8'
 services:
 
+  server_weather:
+    container_name: server_weather
+    working_dir: /app
+    build:
+      context: ./server
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./:/app
+    env_file:
+      - ./server/.env.server.development
+    ports:
+      - "9000:9000"
+
   weather_information:
     container_name: weather_information
     working_dir: /app
