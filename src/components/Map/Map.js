@@ -18,7 +18,6 @@ const Map = () => {
   const { position, mapLoading, error } = useSelector(state => state.map)
 
   useEffect(() => {
-    console.log('< render map >')
     renderMap( loadedMap )
   }, [])
 
@@ -81,12 +80,12 @@ const Map = () => {
 
   return (
     <>
-      <El.MapContainer id='map' />
       {mapLoading && (
         <El.MapContainerLoading>
           <Loading text='Loading map...' />
         </El.MapContainerLoading>
       )}
+      <El.MapContainer id='map' />
     </>
   )
 }
