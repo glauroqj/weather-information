@@ -22,7 +22,7 @@ const Routes = () => {
       <Suspense fallback={ <Loading text='Loading...' /> }>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/detail/:city/:min/:max" component={Detail} />
+          <Route exact path="/detail/:city/:temp/:min/:max" component={Detail} />
           <Redirect push to="/" />
         </Switch>
       </Suspense>

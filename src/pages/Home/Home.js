@@ -35,11 +35,7 @@ const Home = ({ history }) => {
   return (
     <El.HomeContainer className='animated fadeIn'>
       
-      {isVisibleSidebar && (
-        <Sidebar 
-          list={data}
-        />
-      )}
+      <Sidebar list={data} isVisible={isVisibleSidebar} />
       <HomeButtonContainer />
       <Map />
 

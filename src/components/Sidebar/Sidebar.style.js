@@ -5,7 +5,6 @@ export const SidebarContainer = styled.div`
   flex-direction: column;
   min-height: 100vh;
   width: 14rem;
-  font-size: 0.85rem;
   background-color: ${props => props.theme.color.c_light};
   color: ${props => props.theme.color.c_secondary_dark};
   text-align: center;
@@ -14,8 +13,10 @@ export const SidebarContainer = styled.div`
   top: 0;
   z-index: 9;
   overflow: none;
-  box-shadow: 0 2px 5px ${props => props.theme.color.c_gray};
+  box-shadow: 0 2px 8px 10px rgba(0,0,0,0.2);
   padding: 10px 0px;
+  transition: margin .5s ease;
+  margin-left: ${props => props.isVisible ? '0':'-15rem'};
 
   > h4 {
     font-size: ${props => props.theme.typography.fontSize[18]};

@@ -2,11 +2,13 @@
 import { MAP } from 'store/actions/mapActions'
 
 /** initial state */
+const params = new URLSearchParams(window.location.search)
+
 const initialState = {
   mapLoading: true,
   position: {
-    lat: -15.749,
-    lng:-47.949
+    lat: Number( params.get('lat') ) || -15.749,
+    lng: Number( params.get('lng') ) || -47.949
   },
   error: false
 }

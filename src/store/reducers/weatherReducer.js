@@ -6,7 +6,7 @@ const initialState = {
   loading: false,
   error: false,
   data: [],
-  isVisibleSidebar: true
+  isVisibleSidebar: false
 }
 
 const weather = (state = initialState, action) => {
@@ -20,13 +20,19 @@ const weather = (state = initialState, action) => {
       return {
         ...state,
         loading: action.loading,
-        data: action.data
+        data: action.data,
+        isVisibleSidebar: action.toggleSidebar
       }
     case WEATHER.GET_WEATHER_ERROR:
       return {
         ...state,
         loading: action.loading,
         error: action.error
+      }
+    case WEATHER.TOOGLE_SIDEBAR:
+      return {
+        ...state,
+        isVisibleSidebar: action.toggleSidebar
       }
     default:
       return state
