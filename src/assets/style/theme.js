@@ -10,6 +10,7 @@ const Colors = {
   c_main_dark: '#2980b9',
   c_secondary: '#34495e',
   c_secondary_dark: '#2c3e50',
+  c_light: '#ffffff'
 }
 
 const Spaces = {
