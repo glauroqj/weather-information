@@ -5,7 +5,8 @@ import { WEATHER } from 'store/actions/weatherActions'
 const initialState = {
   loading: false,
   error: false,
-  data: []
+  data: [],
+  isVisibleSidebar: true
 }
 
 const weather = (state = initialState, action) => {

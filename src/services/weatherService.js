@@ -32,6 +32,7 @@ const weatherService = payloadPosition => (
       })
       if (responseAPI.status === 200) {
         const finalResponse = await responseAPI.json()
+        console.log(finalResponse.list)
         resolve(finalResponse.list)
       } else {
         reject()

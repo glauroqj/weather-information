@@ -5,12 +5,13 @@ import * as El from './Home.style'
 /** components */
 import Map from 'components/Map/Map'
 import HomeButtonContainer from './_homeButtonContainer'
+import Sidebar from 'components/Sidebar/Sidebar'
 
 const Home = ({ history }) => {
   // const dispatch = useDispatch()
   const { position, mapLoading } = useSelector(state => state.map)
   
-  // const { loading, error, data } = useSelector(state => state.weather)
+  const { isVisibleSidebar,  data } = useSelector(state => state.weather)
 
   useEffect(() => {
     /** update url after change pin position */
@@ -34,8 +35,13 @@ const Home = ({ history }) => {
   return (
     <El.HomeContainer className='animated fadeIn'>
       
+      {isVisibleSidebar && (
+        <Sidebar 
+          // list={data}
+        />
+      )}
       <HomeButtonContainer />
-      <Map />
+      {/* <Map /> */}
 
     </El.HomeContainer>
   )
