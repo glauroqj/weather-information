@@ -14,7 +14,7 @@ const fetchStarting = () => ({
 const fetchDone = payload => ({
   type: WEATHER.GET_WEATHER_DONE,
   loading: false,
-  data: payload.data
+  data: payload
 })
 
 const fetchError = e => ({
@@ -28,19 +28,10 @@ const fetchWeatherService = payload => async dispatch => {
 
   try {
     const result = await weatherService(payload)
-
+    if (result) dispatch( fetchDone(result) )
   } catch(e) {
-    fetchError(e)
+    dispatch( fetchError(e) )
   }
-
-  // const list = await fetch(
-  //   'https://5e9935925eabe7001681c856.mockapi.io/api/v1/catalog'
-  // )
-  // const finalList = await list.json()
-  // console.log('< LIST > ', finalList)
-
-  // if (finalList) dispatch(fetchDone(finalList))
-  // if (!finalList) dispatch(fetchError())
 }
 
 export { WEATHER, fetchWeatherService }

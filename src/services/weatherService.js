@@ -1,7 +1,5 @@
 const weatherService = payloadPosition => (
   new Promise(async (resolve, reject) => {
-    const baseUrl = process.env.REACT_APP_PAI_OPEN_WEATHER_URL
-    const apiKey = process.env.REACT_APP_API_KEY_OPEN_WEATHER
 
     /** translate LNG to LON */
     let newPayloadPosition = Object.assign({}, payloadPosition)
@@ -17,20 +15,15 @@ const weatherService = payloadPosition => (
 
     const configs = {
       ...newPayloadPosition,
-      appid: apiKey,
       cnt: 15,
       units: 'metric'
     }
     
-    const concatConfigs = Object.keys(configs).reduce((acc, cur, idx) => `${acc}${idx===0?'?':'&'}${cur}=${configs[cur]}`, '')
-
-    console.log('< FINAL SERVICE API > ', concatConfigs, `${baseUrl}find${concatConfigs}` )
-
     try {
-      const responseAPI = await fetch('/find', {
+      const responseAPI = await fetch('http://localhost:9000/api/find', {
         method: 'POST',
         body: JSON.stringify({
-          configs
+          ...configs
         }),
         headers: {
           'Accept': 'application/json',
@@ -39,7 +32,9 @@ const weatherService = payloadPosition => (
       })
       if (responseAPI.status === 200) {
         const finalResponse = await responseAPI.json()
-        console.log('< final response > ', finalResponse)
+        resolve(finalResponse.list)
+      } else {
+        reject()
       }
 
     } catch(e) {
