@@ -14,8 +14,8 @@ export const SidebarContainer = styled.div`
   top: 0;
   z-index: 9;
   overflow: none;
-  box-shadow: 0 2px 5px #cecece;
-  padding: 10px 5px;
+  box-shadow: 0 2px 5px ${props => props.theme.color.c_gray};
+  padding: 10px 0px;
 
   > h4 {
     font-size: ${props => props.theme.typography.fontSize[18]};
@@ -34,17 +34,29 @@ export const SidebarList = styled.ul`
   list-style-type: none;
   margin: 0;
   padding: 0;
+
+  > a {
+    color: ${props => props.theme.color.c_main};
+    text-decoration: none;
+    transition: background-color .3s ease;
+    display:block;
+    border-bottom: 1px solid ${props => props.theme.color.c_gray};
+
+    &:hover {
+      background-color: ${props => props.theme.color.c_gray};
+    }
+  }
 `
 
 export const SidebarItem = styled.li`
+  display: flex;
   color: inherit;
   padding: 10px;
   font-size: ${props => props.theme.typography.fontSize[16]};
   text-align: left;
+
+  > span {
+    font-weight: ${props => props.theme.typography.fontWeight.medium};
+    margin-left: 5px;
+  }
 `
-// export const HomeButtonContainer = styled.div`
-//   position: fixed;
-//   z-index: 9;
-//   top: ${props => props.show ? "10%" : "-90px"};
-//   transition: top 0.8s ease;
-// `

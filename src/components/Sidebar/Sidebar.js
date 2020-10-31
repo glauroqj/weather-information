@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Suspense, lazy, memo } from 'react'
-import { withRouter } from 'react-router'
+import { withRouter, Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 /** style */
@@ -21,9 +21,17 @@ const Sidebar = ({ history, list }) => {
       <h4> Closests Cities</h4>
       <El.SidebarList>
         {list.length > 0 && list.map((item, idx) => (
-          <El.SidebarItem key={idx}>
-            {item.name}
-          </El.SidebarItem>
+          <Link
+            key={idx}
+            to={{
+              pathname:`detail/${item.name}/${item?.main?.temp_min || 0}/${item?.main?.temp_max || 0}`
+            }}
+            target="_blank"
+          >
+            <El.SidebarItem>
+              {item.name} <span>{item.main.temp} ºc</span>
+            </El.SidebarItem>
+          </Link>
         ))}
       </El.SidebarList>
     </El.SidebarContainer>

@@ -73,6 +73,9 @@ const Map = () => {
       tag.onload = () => callback ? loadedMap() : null
       tag.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`
       document.body.appendChild(tag)
+    } else {
+      /** just load map */
+      loadedMap()
     }
   }
 

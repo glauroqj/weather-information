@@ -37,7 +37,7 @@ const Home = ({ history }) => {
       
       {isVisibleSidebar && (
         <Sidebar 
-          // list={data}
+          list={data}
         />
       )}
       <HomeButtonContainer />
