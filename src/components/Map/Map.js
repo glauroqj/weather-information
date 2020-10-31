@@ -13,7 +13,7 @@ const Loading = lazy(() => import('components/Loading/Loading'))
 
 const apiKey = process?.env?.REACT_APP_API_KEY_GOOGLE
 
-const Map = ({ history }) => {
+const Map = () => {
   const dispatch = useDispatch()
   const { position, mapLoading } = useSelector(state => state.map)
 
@@ -21,7 +21,7 @@ const Map = ({ history }) => {
     renderMap( loadedMap )
   }, [])
 
-  const mapEvents = (marker, infoWindow) => {
+  const mapEvents = marker => {
     window.google.maps.event.addListener(marker, 'dragend', event => {
       const { lat, lng } = event.latLng
       console.log('< DRAG END > ', lat().toFixed(3), lng().toFixed(3) )
@@ -46,8 +46,7 @@ const Map = ({ history }) => {
       const marker = new window.google.maps.Marker({
         position: position,
         map: startMap,
-        draggable: true,
-        title: 'Test'
+        draggable: true
       })
 
       const infoWindow = new window.google.maps.InfoWindow({
@@ -56,9 +55,8 @@ const Map = ({ history }) => {
       infoWindow.open(startMap, marker)
 
       dispatch( loadingMapDone() )
-
       /** handle map events */
-      mapEvents(marker, infoWindow)
+      mapEvents(marker)
     }
   }
 

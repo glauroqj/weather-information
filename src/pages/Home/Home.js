@@ -14,8 +14,26 @@ const Home = ({ history }) => {
   const [showButton, setShowButton] = useState(false)
 
   useEffect(() => {
-    if (!mapLoading && !showButton) setShowButton(true)
+    const params = new URLSearchParams(window.location.search)
+    if (!mapLoading && !showButton || params.get('lat') && params.get('lng')) setShowButton(true)
+
+    /** update url after change pin position */
+    if (!mapLoading) updateUrl()
   }, [position])
+
+  const updateUrl = () => {
+    const { lat, lng } = position
+    const params = new URLSearchParams(window.location.search)
+    /** check searchTerm first, only apply this feature if searchTerm !== '' */
+    params.set('lat', lat)
+    params.set('lng', lng)
+
+    if ( params.get('lat') && params.get('lng') ) {
+      window.history.replaceState({}, '', `${window.location.pathname}?${params}`)
+    } else {
+      window.history.replaceState({}, '', `${window.location.pathname}`)
+    }
+  }
   // const callLoginService = async () => {
 
   //   const response = await dispatch( loginService() )
