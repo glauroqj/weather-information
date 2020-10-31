@@ -12,7 +12,6 @@ const Button = (
     size,
     children,
     buttonLoading,
-    loadingSize,
     disabled,
     actionClick,
   }) => {
@@ -59,7 +58,6 @@ Button.propTypes = {
     PropTypes.array
   ]).isRequired,
   buttonLoading: PropTypes.bool,
-  loadingSize: PropTypes.string,
   disabled: PropTypes.bool,
   actionClick: PropTypes.func,//.isRequired,
 }

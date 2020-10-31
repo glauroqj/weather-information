@@ -5,11 +5,9 @@ import { MAP } from 'store/actions/mapActions'
 const initialState = {
   mapLoading: true,
   position: {
-    lat: -15.749997,
-    lng:-47.9499962
-  },
-  mapInstance: null,
-  mapMarker: null
+    lat: -15.749,
+    lng:-47.949
+  }
 }
 
 const weather = (state = initialState, action) => {
@@ -18,9 +16,12 @@ const weather = (state = initialState, action) => {
     case MAP.LOAD_MAP_DONE:
       return {
         ...state,
-        mapInstance: action.mapInstance,
-        mapMarker: action.mapMarker,
         mapLoading: action.loading
+      }
+    case MAP.MAP_UPDATE_POSITION:
+      return {
+        ...state,
+        position: action.position
       }
     default:
       return state

@@ -1,5 +1,32 @@
 import styled, { css } from 'styled-components'
 
+const sizeOptions = {
+  sm: () => css`padding: ${props=> props.theme.space[8]} ${props=> props.theme.space[12]};`,
+  md: () => css`padding: ${props=> props.theme.space[12]};`,
+  lg: () => css`padding: ${props=> props.theme.space[16]};`
+}
+
+const colorOptions = {
+  primary: () => css`
+    background-color: ${props => props.theme.color.c_main};
+    color: ${props => props.theme.color.c_light};
+    border-color: ${props => props.theme.color.c_main};
+    &:hover {
+      border-color: ${props => props.theme.color.c_main_dark};
+      background-color: ${props => props.theme.color.c_main_dark};
+    }
+  `,
+  secondary: () => css`
+    background-color: ${props => props.theme.color.c_secondary};
+    color: ${props => props.theme.color.c_light};
+    border-color: ${props => props.theme.color.c_secondary};
+    &:hover {
+      border-color: ${props => props.theme.color.c_secondary_dark};
+      background-color: ${props => props.theme.color.c_secondary_dark};
+    }
+  `
+}
+
 export const Button = styled.button`
   background-color: transparent;
   cursor: pointer;
@@ -24,34 +51,10 @@ export const Button = styled.button`
     pointer-events: none;
   }
 
-  ${props => props.color.primary && css`
-    background-color: ${props => props.theme.color.c_main};
-    color: ${props => props.theme.color.c_light};
-    border-color: ${props => props.theme.color.c_main};
-    &:hover {
-      border-color: ${props => props.theme.color.c_main_dark};
-      background-color: ${props => props.theme.color.c_main_dark};
-    }
-  `}
-  ${props => props.color.secondary && css`
-    background-color: ${props => props.theme.color.c_secondary};
-    color: ${props => props.theme.color.c_light};
-    border-color: ${props => props.theme.color.c_secondary};
-    &:hover {
-      border-color: ${props => props.theme.color.c_secondary_dark};
-      background-color: ${props => props.theme.color.c_secondary_dark};
-    }
-  `}
-
-  ${props => props.size.sm && css`
-    padding: ${props=> props.theme.space[8]} ${props=> props.theme.space[12]};
-  `}
-  ${props => props.size.md && css`
-    padding: ${props=> props.theme.space[12]};
-  `}
-  ${props => props.size.lg && css`
-    padding: ${props=> props.theme.space[16]};
-  `}
+  //color
+  ${props => colorOptions[props.color]() }
+  //size
+  ${props => sizeOptions[props.size]() }
 `
 export const ButtonLoading = styled.button`
   display: flex;

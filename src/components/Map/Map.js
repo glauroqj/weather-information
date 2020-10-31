@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from 'react-redux'
 /** style */
 import * as El from './Map.style'
 /** actions */
-import { loadingMapStart, loadingMapDone } from 'store/actions/mapActions'
+import {
+  loadingMapStart,
+  loadingMapDone,
+  mapUpdatePosition
+} from 'store/actions/mapActions'
 /** components */
 const Loading = lazy(() => import('components/Loading/Loading'))
 
@@ -21,7 +25,13 @@ const Map = ({ history }) => {
     window.google.maps.event.addListener(marker, 'dragend', event => {
       const { lat, lng } = event.latLng
       console.log('< DRAG END > ', lat().toFixed(3), lng().toFixed(3) )
-      console.log(infoWindow)
+
+      dispatch(
+        mapUpdatePosition({
+          lat: lat().toFixed(3),
+          lng: lng().toFixed(3)
+        })
+      )
     })
   }
 
@@ -45,12 +55,7 @@ const Map = ({ history }) => {
       })
       infoWindow.open(startMap, marker)
 
-      dispatch(
-        loadingMapDone({
-          mapInstance: startMap,
-          mapMarker: marker
-        })
-      )
+      dispatch( loadingMapDone() )
 
       /** handle map events */
       mapEvents(marker, infoWindow)

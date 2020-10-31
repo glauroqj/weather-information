@@ -3,14 +3,17 @@ import { useDispatch, useSelector } from 'react-redux'
 /** style */
 import * as El from './Home.style'
 /** components */
-const Loading = lazy(() => import('components/Loading/Loading'))
+// const Loading = lazy(() => import('components/Loading/Loading'))
+const Button = lazy(() => import('components/Button/Button'))
 const Map = lazy(() => import('components/Map/Map'))
 
 const Home = ({ history }) => {
   // const dispatch = useDispatch()
-  // const { loading } = useSelector(state => state.weather)
+  const { position } = useSelector(state => state.map)
 
-
+  useEffect(() => {
+    console.log('< HOME > ', position)
+  }, [position])
   // const callLoginService = async () => {
 
   //   const response = await dispatch( loginService() )
@@ -33,6 +36,13 @@ const Home = ({ history }) => {
 
   return (
     <El.HomeContainer className='animated fadeIn'>
+      <Button
+        actionClick={() => {}}
+        size='sm'
+        color='primary'
+      >
+        Search
+      </Button>
       <Map />
     </El.HomeContainer>
   )
