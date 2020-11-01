@@ -1,41 +1,46 @@
-import React, { useEffect, lazy } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, memo } from 'react'
+import { useSelector } from 'react-redux'
 /** style */
 import * as El from './Home.style'
 /** components */
-const Loading = lazy(() => import('../../components/Loading/Loading'))
-const Map = lazy(() => import('../../components/Map/Map'))
+import Map from 'components/Map/Map'
+import HomeButtonContainer from './_homeButtonContainer'
+import Sidebar from 'components/Sidebar/Sidebar'
 
-const Home = ({ history }) => {
-  // const dispatch = useDispatch()
-  // const { loading } = useSelector(state => state.weather)
+const Home = () => {
+  const { position, mapLoading } = useSelector(state => state.map)
+  
+  const { isVisibleSidebar,  data } = useSelector(state => state.weather)
 
+  useEffect(() => {
+    /** update url after change pin position */
+    if (!mapLoading) updateUrl()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [position])
 
-  // const callLoginService = async () => {
+  const updateUrl = () => {
+    const { lat, lng } = position
+    const params = new URLSearchParams(window.location.search)
+    /** check searchTerm first, only apply this feature if searchTerm !== '' */
+    params.set('lat', lat)
+    params.set('lng', lng)
 
-  //   const response = await dispatch( loginService() )
-
-  //   if (response === 'email-not-allowed') {
-  //     await dispatch( logoutService() )
-  //     toast.error('Email não autorizado no momento!')
-  //   }
-
-  //   /** only in first access */
-  //   if (response && response.displayName) {
-  //     console.log('< redirect user >')
-  //     // history.push('/timeline', {state: {account: {...account}}})
-  //     window.location.href = ('/about')
-  //   }
-
-  // }
-
-  // if (loading) return <Loading text='Loading home...' />
+    if ( params.get('lat') && params.get('lng') ) {
+      window.history.replaceState({}, '', `${window.location.pathname}?${params}`)
+    } else {
+      window.history.replaceState({}, '', `${window.location.pathname}`)
+    }
+  }
 
   return (
     <El.HomeContainer className='animated fadeIn'>
+      
+      <Sidebar list={data} isVisible={isVisibleSidebar} />
+      <HomeButtonContainer />
       <Map />
+
     </El.HomeContainer>
   )
 }
 
-export default Home
+export default memo(Home)

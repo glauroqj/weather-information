@@ -1,35 +1,60 @@
+import weatherService from 'services/weatherService'
 const WEATHER = {
   GET_WEATHER_STARTING: 'GET_WEATHER_STARTING',
   GET_WEATHER_DONE: 'GET_WEATHER_DONE',
-  GET_WEATHER_ERROR: 'GET_WEATHER_ERROR'
+  GET_WEATHER_ERROR: 'GET_WEATHER_ERROR',
+
+  TOOGLE_SIDEBAR: 'TOOGLE_SIDEBAR'
 }
 
 /** fetch */
 const fetchStarting = () => ({
-  type: WEATHER.GET_WEATHER_STARTING
+  type: WEATHER.GET_WEATHER_STARTING,
+  loading: true
 })
 
 const fetchDone = payload => ({
   type: WEATHER.GET_WEATHER_DONE,
-  loading: false
+  loading: false,
+  data: payload.data,
+  toggleSidebar: payload.toggleSidebar
 })
 
-const fetchError = () => ({
+const fetchError = e => ({
   type: WEATHER.GET_WEATHER_ERROR,
+  error: e,
   loading: false
 })
 
-const fetchWeatherService = () => async dispatch => {
+const toogleSidebarAction = value => ({
+  type: WEATHER.TOOGLE_SIDEBAR,
+  toggleSidebar: value
+})
+
+const fetchWeatherService = payload => async dispatch => {
   dispatch(fetchStarting())
 
-  // const list = await fetch(
-  //   'https://5e9935925eabe7001681c856.mockapi.io/api/v1/catalog'
-  // )
-  // const finalList = await list.json()
-  // console.log('< LIST > ', finalList)
-
-  // if (finalList) dispatch(fetchDone(finalList))
-  // if (!finalList) dispatch(fetchError())
+  try {
+    const result = await weatherService(payload)
+    if (result) {
+      dispatch( 
+        fetchDone({
+          data: result,
+          toggleSidebar: true
+        })
+      )
+    }
+  } catch(e) {
+    dispatch( fetchError(e) )
+  }
 }
 
-export { WEATHER, fetchWeatherService }
+export {
+  WEATHER,
+  fetchWeatherService,
+  toogleSidebarAction
+}
+
+/**
+  API DOCS: https://openweathermap.org/weather-data
+*/

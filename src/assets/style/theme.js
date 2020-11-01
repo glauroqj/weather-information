@@ -10,6 +10,8 @@ const Colors = {
   c_main_dark: '#2980b9',
   c_secondary: '#34495e',
   c_secondary_dark: '#2c3e50',
+  c_light: '#ffffff',
+  c_gray: '#eeeeee'
 }
 
 const Spaces = {
@@ -40,7 +42,7 @@ const FontSize = {
 const FontWeight = {
   light: 300,
   normal: 400,
-  medium: 600,
+  medium: 500,
   bold: 700
 }
 
