@@ -1,3 +1,4 @@
+const apiURL = process.env.REACT_APP_API_NODE
 const weatherService = payloadPosition => (
   new Promise(async (resolve, reject) => {
 
@@ -20,7 +21,7 @@ const weatherService = payloadPosition => (
     }
     
     try {
-      const responseAPI = await fetch('http://localhost:9000/api/find', {
+      const responseAPI = await fetch(`${apiURL}/api/find`, {
         method: 'POST',
         body: JSON.stringify({
           ...configs

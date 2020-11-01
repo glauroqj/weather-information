@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 /** style */
 import * as El from './Home.style'
@@ -9,9 +9,10 @@ import Button from 'components/Button/Button'
 
 const HomeButtonContainer = () => {
   const dispatch = useDispatch()
+
   const { position, mapLoading } = useSelector(state => state.map)
   
-  const { loading, error, data } = useSelector(state => state.weather)
+  const { loading } = useSelector(state => state.weather)
 
   const [showButton, setShowButton] = useState(false)
 
@@ -19,7 +20,7 @@ const HomeButtonContainer = () => {
     const params = new URLSearchParams(window.location.search)
     if (!mapLoading && !showButton) setShowButton(true)
     if ( params.get('lat') && params.get('lng') ) setShowButton(true)
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [position])
 
   return (

@@ -1,14 +1,13 @@
-import React, { useState, useEffect, Suspense, lazy, memo } from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import React, { memo } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { useDispatch, useSelector } from 'react-redux'
 /** style */
 import * as El from './Sidebar.style'
 /** components */
 
 const Sidebar = ({ list, isVisible }) => (
   <El.SidebarContainer isVisible={isVisible}>
-    <h4> Closests Cities</h4>
+    <h4> Closests {list.length} Cities</h4>
     <El.SidebarList>
       {list.length > 0 && list.map((item, idx) => (
         <Link

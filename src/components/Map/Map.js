@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, memo } from 'react'
+import React, { useEffect, memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 /** style */
 import * as El from './Map.style'
@@ -20,6 +20,7 @@ const Map = () => {
 
   useEffect(() => {
     renderMap( loadedMap )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const mapEvents = marker => {

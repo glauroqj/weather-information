@@ -13,11 +13,8 @@ const Detail = lazy(() => import('pages/Detail/Detail'))
 
 const Routes = () => {
 
-  // const dispatch = useDispatch()
-
   return (    
     <BrowserRouter>
-        {/* <ServiceWorker /> */}
         
       <Suspense fallback={ <Loading text='Loading...' /> }>
         <Switch>

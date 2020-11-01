@@ -18,8 +18,8 @@
 
 ## Technologies
 
-- React ( framewrok js UI )
-- Redux ( state management )
+- React ( framewrok js UI / routes )
+- Redux/Redux-Thunk ( state management )
 - Styled components ( css in js )
 
 ### Infra

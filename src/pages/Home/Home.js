@@ -1,5 +1,5 @@
-import React, { useState, useEffect, Suspense, lazy, memo } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, memo } from 'react'
+import { useSelector } from 'react-redux'
 /** style */
 import * as El from './Home.style'
 /** components */
@@ -7,8 +7,7 @@ import Map from 'components/Map/Map'
 import HomeButtonContainer from './_homeButtonContainer'
 import Sidebar from 'components/Sidebar/Sidebar'
 
-const Home = ({ history }) => {
-  // const dispatch = useDispatch()
+const Home = () => {
   const { position, mapLoading } = useSelector(state => state.map)
   
   const { isVisibleSidebar,  data } = useSelector(state => state.weather)
@@ -16,6 +15,7 @@ const Home = ({ history }) => {
   useEffect(() => {
     /** update url after change pin position */
     if (!mapLoading) updateUrl()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [position])
 
   const updateUrl = () => {

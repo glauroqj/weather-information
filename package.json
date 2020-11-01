@@ -19,7 +19,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "###### | DOCKER COMMON SCRIPTS | ##########################################": "",
     "delete-all": "yarn delete-containers && yarn delete-images && yarn delete-volumes",
