@@ -38,7 +38,7 @@
   - [docker](https://docs.docker.com/get-docker/) `( version equal or above 19.03.8 )`
   - [docker-compose](https://docs.docker.com/compose/install/) `( version equal or above 1.26.0 )`
 
-- After run all this commands, please check your [localhost:3000](http://localhost:3000)
+- After successful installation, please check your [localhost:3000](http://localhost:3000)
 
 ## Folders Tree
 
