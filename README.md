@@ -24,12 +24,21 @@
 - Node.js ( backend / BFF )
 
 ## Infra
-  - Docker
-  - Docker-compose ( development )
+
+- Docker `( version equal or above 19.03.8 )`
+- Docker-compose `( version equal or above 1.26.0 )`
 
 ## Step by Step
 
-- 
+- Before we start, check if do you have `npm` and `yarn` installed, just in case if doesnt installed use this links:
+  - [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+  - [YARN](https://classic.yarnpkg.com/en/docs/install)
+
+- In root folder (./) run the command `yarn dev-start`, please make sure do you have `docker` and `docker-compose` already installed in the right versions.
+  - Docker `( version equal or above 19.03.8 )`
+  - Docker-compose `( version equal or above 1.26.0 )`
+
+
 
 ## Folders Tree
 
@@ -98,6 +107,5 @@
 │           ├── index.js
 │           ├── mapReducer.js
 │           └── weatherReducer.js
-├── yarn-error.log
 └── yarn.lock
 ```

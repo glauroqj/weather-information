@@ -7,7 +7,7 @@ import thunkMiddleware from 'redux-thunk'
 /** reducers */
 import reducers from './reducers/index'
 
-const store = process.env.REACT_APP_ENVITONMENT === 'development'
+const store = process.env.REACT_APP_ENVIRONMENT === 'development'
   ? createStore(
     reducers, 
     composeWithDevTools(
