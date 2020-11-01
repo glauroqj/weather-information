@@ -33,6 +33,7 @@
 
 ## Folders Tree
 
+```
 .
 ├── docker-compose.yml -> infra/dev/docker-compose.yml
 ├── infra
@@ -99,3 +100,4 @@
 │           └── weatherReducer.js
 ├── yarn-error.log
 └── yarn.lock
+```
