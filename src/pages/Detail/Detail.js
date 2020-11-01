@@ -11,7 +11,21 @@ const Detail = ({ history }) => {
   
   return (
     <El.DetailContainer className='animated fadeIn'>
-      detail
+
+      <El.DetailContent>
+
+        <El.DetailList>
+          <h2>Weather Detail</h2>
+
+          <El.DetailListItem>City: <b>{city}</b></El.DetailListItem>
+          <El.DetailListItem>Temperature: <b>{temp}º</b></El.DetailListItem>
+          <El.DetailListItem>Temperature Min.: <b>{min}º</b></El.DetailListItem>
+          <El.DetailListItem>Temperature Max.: <b>{max}º</b></El.DetailListItem>
+
+        </El.DetailList>
+
+      </El.DetailContent>
+
     </El.DetailContainer>
   )
 }

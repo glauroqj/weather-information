@@ -19,7 +19,7 @@ const Sidebar = ({ list, isVisible }) => (
           target="_blank"
         >
           <El.SidebarItem className='animated fadeIn'>
-            {item.name} <span>{item?.main?.temp || 0} ºc</span>
+            {item.name} <span>{item?.main?.temp || 0}º</span>
           </El.SidebarItem>
         </Link>
       ))}
