@@ -30,15 +30,15 @@
 
 ## Step by Step
 
-- Before we start, check if do you have `npm` and `yarn` installed, just in case if doesnt installed use this links:
-  - [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-  - [YARN](https://classic.yarnpkg.com/en/docs/install)
+- Before we start, check if do you have `npm` and `yarn` installed, just in case if doesni t installed use this links:
+  - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+  - [yarn](https://classic.yarnpkg.com/en/docs/install)
 
-- In root folder (./) run the command `yarn dev-start`, please make sure do you have `docker` and `docker-compose` already installed in the right versions.
-  - Docker `( version equal or above 19.03.8 )`
-  - Docker-compose `( version equal or above 1.26.0 )`
+- Ok, let's begin, in root folder (./) run the command `yarn dev-start` or `npm dev-start`, please make sure do you have `docker` and `docker-compose` already installed in the right versions. Click on links in case doesn't installed.
+  - [docker](https://docs.docker.com/get-docker/) `( version equal or above 19.03.8 )`
+  - [docker-compose](https://docs.docker.com/compose/install/) `( version equal or above 1.26.0 )`
 
-
+- After run all this commands, please check your [localhost:3000](http://localhost:3000)
 
 ## Folders Tree
 
